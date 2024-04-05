@@ -1,4 +1,3 @@
-```
 # AkaiGoBRRR - Akai Midi Mix Custom MIDI Interface
 
 ## Overview:
@@ -36,4 +35,4 @@ This Python script, based on Mido, enhances the functionality of your Akai Midi 
 Feel free to modify and improve the code according to your needs. If you have any questions, don't hesitate to ask ChatGPT!
 
 **Note:** The provided information is directly from the creator's documentation.
-```
+
