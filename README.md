@@ -8,7 +8,7 @@ This Python script, based on Mido, enhances the functionality of your Akai Midi 
 - **Shiftable Rows:** Rows can be shifted using the SOLO button, providing access to additional buttons for enhanced control.
 - **Bank Functionality:** Utilizes the Bank Left and Bank Right buttons to switch between four separate banks (A, B, C, D), each with its own set of toggle states and CC outputs.
 - **Channel Segregation:** Each bank outputs MIDI messages on a different MIDI channel, enhancing organization and control.
-- **Binary Dial Indicator:** The bank buttons visually indicate the active bank, making it easy to track.
+- **Binary Dial Indicator:** The bank buttons visually indicate the active bank, making it easier to track.
 - **Wraparound Feature:** Switching between banks wraps around the bank list, allowing seamless navigation.
 - **Pickup Mode:** Prevents sudden jumps in control positions when switching banks by comparing new inputs with the last stored CC outputs.
 
