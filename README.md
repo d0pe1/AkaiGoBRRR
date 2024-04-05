@@ -22,8 +22,9 @@ This Python script, based on Mido, enhances the functionality of your Akai Midi 
 1. Install Mido, Rtp_midi, and ensure Python version > 3.7.
 2. Connect your Akai Midi Mix MIDI controller and set up a loopback MIDI device.
 3. Update the script with your MIDI ports. (Refer to comments in the script)
-4. Run the script. On the first run, it will list all available MIDI ports (input and output).
-5. Enjoy enhanced control and customization with your Akai Midi Mix!
+4. Run the script by running MidiMasterator.py in terminal.
+5. On the run, it will list all available MIDI ports (input and output) should you have trouble finding the proper ports.
+6. Enjoy enhanced control and customization with your Akai Midi Mix!
 
 ## To Do:
 - Implement user input for MIDI ports to make setup more convenient.
