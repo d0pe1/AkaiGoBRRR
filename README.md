@@ -13,7 +13,7 @@ This Python script, based on Mido, enhances the functionality of your Akai Midi 
 - **Pickup Mode:** Prevents sudden jumps in control positions when switching banks by comparing new inputs with the last stored CC outputs.
 
 ## Requirements:
-- Mido and Rtp_midi
+- Mido (pip install mido)
 - Python version > 3.7
 - Text Editor
 - Loopback MIDI device (e.g., loopbe30)
