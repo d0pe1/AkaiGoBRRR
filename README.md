@@ -1,39 +1,60 @@
-# AkaiGoBRRR - Akai Midi Mix Custom MIDI Interface
+# AkaiGoBRRR
 
-## Overview:
-This Python script, based on Mido, enhances the functionality of your Akai Midi Mix MIDI controller by providing custom mappings. It offers features like fully lit, stateful buttons for both rows, shiftable rows using the SOLO button, and bank functionality. The script organizes MIDI inputs and outputs into separate banks (A, B, C, D), each with its own stored toggle states and control change (CC) outputs. Additionally, it includes a pickup mode to prevent abrupt jumps when switching banks.
+**The MIDI Masterator for your 99€ Akai POS (Piece Of Surface)**
 
-## Features:
-- **Fully Lit, Stateful Buttons:** Buttons reflect their states through lighting, providing intuitive feedback.
-- **Shiftable Rows:** Rows can be shifted using the SOLO button, providing access to additional buttons for enhanced control.
-- **Bank Functionality:** Utilizes the Bank Left and Bank Right buttons to switch between four separate banks (A, B, C, D), each with its own set of toggle states and CC outputs.
-- **Channel Segregation:** Each bank outputs MIDI messages on a different MIDI channel, enhancing organization and control.
-- **Binary Dial Indicator:** The bank buttons visually indicate the active bank, making it easier to track.
-- **Wraparound Feature:** Switching between banks wraps around the bank list, allowing seamless navigation.
-- **Pickup Mode:** Prevents sudden jumps in control positions when switching banks by comparing new inputs with the last stored CC outputs.
+> _“Akai could’ve easily done this, but they didn’t. Apparently, they hate fun.”_
 
-## Requirements:
-- Mido (pip install mido)
-- Python version > 3.7
-- Text Editor
-- Loopback MIDI device (e.g., loopbe30)
+## What is AkaiGoBRRR?
 
-## Setup:
-1. Install Mido, Rtp_midi, and ensure Python version > 3.7.
-2. Connect your Akai Midi Mix MIDI controller and set up a loopback MIDI device.
-3. Update the script with your MIDI ports. (Refer to comments in the script)
-4. Run the script by running MidiMasterator.py in terminal.
-5. On the run, it will list all available MIDI ports (input and output) should you have trouble finding the proper ports.
-6. Enjoy enhanced control and customization with your Akai Midi Mix!
+AkaiGoBRRR is the ultimate hack for your Akai MIDI controller. Tired of your controller acting like a toddler on a sugar rush every time you change banks? Sick of losing your carefully dialed-in values because Akai thought “pickup mode” was too much fun for their users? AkaiGoBRRR fixes all that—and then some.
 
-## To Do:
-- Implement user input for MIDI ports to make setup more convenient.
-- Refine the pickup mode to allow for smoother control adjustments.
+## Features
 
-## Known Bugs:
-- Occasional loss of control due to slow updates from the MIDI Mix when outputting CC moving the cc out of the pickup range controls. This will be addressed in future updates by refining the pickup mode.
+### 🚀 Smart Pickup Mode
+No more value jumps when switching banks! Our custom pickup mode is so smart, it could probably run for president. It uses push-pull scaling, so when you get close to your saved value, it smoothly snaps the output to your input—no matter which way you turn the knob. Akai could’ve done this, but they were too busy counting their money.
 
-Feel free to modify and improve the code according to your needs. If you have any questions, don't hesitate to ask ChatGPT!
+### 🎚️ Self-Scaling Pickup
+Move within 25 units of your saved value, and AkaiGoBRRR starts gently pulling or pushing the output. Over the next 35 units, it locks in your value like a pro. You get precision, control, and zero drama. Akai? They gave you chaos.
 
-**Note:** The provided information is directly from the creator's documentation.
+### 🏦 Bank Management That Doesn’t Suck
+Switch banks without your values going haywire. Your settings stay put, your workflow stays smooth, and your controller finally feels like it’s worth more than a Happy Meal toy.
+
+### 🦾 Customizable MIDI Handling
+Plug in your Akai, and AkaiGoBRRR takes over. Custom scripts, smart state handling, and solo MIDI management. You want control? You got it.
+
+### 🖥️ GUI for Humans
+No cryptic menus. No “read the manual” moments. Just a clean, simple interface that lets you master your MIDI like Akai never wanted you to.
+
+### 🧠 State Memory
+Remembers your last settings, so you don’t have to. AkaiGoBRRR is like your controller’s brain—if Akai had bothered to give it one.
+
+### 🔥 JSON Bank Files
+Save, load, and swap banks with JSON files. Because you deserve modern convenience, not 1990s firmware.
+
+### 🛠️ Extensible & Hackable
+Want to add your own features? Go wild. AkaiGoBRRR is open, documented, and ready for your weirdest ideas.
+
+## Why AkaiGoBRRR?
+
+Because Akai could’ve made your controller awesome, but they didn’t. So we did. For 99€, you get a controller. For free, you get AkaiGoBRRR—and a controller that finally does what you want.
+
+## Installation
+
+1. Clone this repo.
+2. Install the requirements (`pip install -r requirements.txt`).
+3. Run the Masterator GUI.
+4. Laugh at Akai’s missed opportunities.
+
+## Contributing
+
+PRs welcome. The more fun you add, the more Akai cries.
+
+## License
+
+MIT. Because fun should be free.
+
+---
+
+Ready to make your Akai go BRRRR?  
+Download, install, and show Akai what fun looks like.
 
