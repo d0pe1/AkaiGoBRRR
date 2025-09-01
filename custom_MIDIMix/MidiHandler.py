@@ -1,4 +1,6 @@
 import mido
+from StateHandler import StateHandler
+
 
 # Notes
 notes = [
@@ -56,17 +58,10 @@ class MidiHandler:
         self.cb2 = cb2
         self.channel = mchannel
         self.note_27_state = False  # Attribute to track the state of note 27
-        self.toggle_states = {
-            1: False, 2: False, 3: False, 4: False,
-            5: False, 6: False, 7: False, 8: False,
-            9: False, 10: False, 11: False, 12: False,
-            13: False, 14: False, 15: False, 16: False,
-            17: False, 18: False, 19: False, 20: False,
-            21: False, 22: False, 23: False, 24: False,
-            35: False, 38: False, 41: False, 44: False,
-            47: False, 53: False, 50: False, 56: False
-        }  # Dictionary to store toggle states
-        self.last_cc_values = {control: 0 for control in control_changes}  # Dictionary to store last sent control change values
+        self.sh = StateHandler()
+        self.toggle_states = self.sh.default_toggle_states
+        self.last_cc_values = self.sh.default_cc
+        self.toggle_states, self.last_cc_values = self.sh.load_state(self.ID)
 
     def process_messages(self, message):
         """Process incoming MIDI messages."""
@@ -172,6 +167,7 @@ class MidiHandler:
         outbound = mido.Message('note_on', note=message.note, velocity=message.velocity, channel=self.channel)
         print("Sent note:", outbound)
         self.toggle_note_state(message.note)
+        self.sh.save_state(self.toggle_states, self.last_cc_values, self.ID)
         self.cb1(outbound)
         self.update_lights()
 
@@ -179,11 +175,13 @@ class MidiHandler:
         """Send note-off messages to the output port."""
         outbound = mido.Message('note_off', note=message.note, velocity=message.velocity, channel=self.channel)
         if message.note not in [25, 26, 27]:
+            self.sh.save_state(self.toggle_states, self.last_cc_values, self.ID)
             print("Sent note:", outbound)
             self.cb1(outbound)
 
     def send_message(self, message):
         """Send other types of MIDI messages to the output port."""
+        self.sh.save_state(self.toggle_states, self.last_cc_values, self.ID)
         self.cb1(message)
 
     def within_10(self, ccn, cco):
@@ -210,10 +208,10 @@ class MidiHandler:
         print("Sent control change:", message)
         if self.within_10(message.value, self.last_cc_values[message.control]):
             self.last_cc_values[message.control] = message.value
+            self.sh.save_state(self.toggle_states, self.last_cc_values, self.ID)
             self.cb1(mido.Message('control_change', control=message.control, value=message.value, channel=self.channel))
-        else :
+        else:
             print("Not close enough to the Stored Value. Ignoring")
-
 
     def toggle_note_state(self, note_number):
         """Toggle the state of the note with the given note number."""
@@ -233,15 +231,15 @@ class MidiHandler:
             if state:
                 if note_number in after_shift and self.note_27_state:
                     note_number -= 32
-                    self.cb2(mido.Message('note_on', note=note_number, velocity=127))
+                    self.cb2(mido.Message('note_on', note=int(note_number), velocity=127))
                 else:
-                    self.cb2(mido.Message('note_on', note=note_number, velocity=127))
+                    self.cb2(mido.Message('note_on', note=int(note_number), velocity=127))
             else:
                 if note_number in after_shift and self.note_27_state:
                     note_number -= 32
-                    self.cb2(mido.Message('note_on', note=note_number, velocity=0))
+                    self.cb2(mido.Message('note_on', note=int(note_number), velocity=0))
                 else:
-                    self.cb2(mido.Message('note_on', note=note_number, velocity=0))
+                    self.cb2(mido.Message('note_on', note=int(note_number), velocity=0))
 
     def send_light_update(self, note_number):
         """Send light updates based on the toggle states."""

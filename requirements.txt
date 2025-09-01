@@ -1,0 +1,10 @@
+# Runtime dependencies for the MIDI Masterator project
+# tkinter ships with the standard library on Windows.
+# Core dependency:
+mido>=1.2,<2.0
+
+# Optional (uncomment to enable real MIDI hardware I/O backend):
+# python-rtmidi>=1.5,<2.0
+# Installing python-rtmidi from source on Windows requires MSVC Build Tools.
+# If wheels are unavailable for your Python version, either install the
+# "Desktop development with C++" workload (VS Build Tools) or use Python 3.11.
