@@ -28,6 +28,9 @@ Use‑case: **live set / DJ mix companion**. Turn one MIDImix into four discipli
 
 Because “a lot of buttons” without **banks**, **LED truth**, and **state memory** is unfinished UX. This project wires the obvious:
 real banks on the bank buttons, a binary LED dial, and dead‑simple **toggle notes via loopback** so you can bind anything in any DAW without ever writing a control script.
+This is intended for Live use to make your DJ Pseudo Musician peer blush in anguish while they watch you pull of shit they couldn't even dream of on their scrawny little CDJs. 
+Like, why are they even called that still, CDJ? 
+![hayaaaaa](https://github.com/user-attachments/assets/112ff11b-3a47-4381-910e-b446f4cb1346)
 
 ---
 
@@ -124,7 +127,7 @@ GUI pops; bank A active; LED dial reads **off/off**.
 - **Rec‑Arm shift layer**: use as “alt‑arm” or **momentary punch‑record** mapping.  
 - **Loopback discipline**: reserve one loopback bus per rig to avoid cross‑project confusion.
 
----![hayaaaaa](https://github.com/user-attachments/assets/b5f31cb1-4799-478c-affa-1730cfb935e4)
+
 
 
 ## Troubleshooting
