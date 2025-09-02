@@ -124,7 +124,8 @@ GUI pops; bank A active; LED dial reads **off/off**.
 - **Rec‑Arm shift layer**: use as “alt‑arm” or **momentary punch‑record** mapping.  
 - **Loopback discipline**: reserve one loopback bus per rig to avoid cross‑project confusion.
 
----
+---![hayaaaaa](https://github.com/user-attachments/assets/b5f31cb1-4799-478c-affa-1730cfb935e4)
+
 
 ## Troubleshooting
 
