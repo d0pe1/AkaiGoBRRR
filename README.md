@@ -17,8 +17,8 @@ No scripts, no remote API, no Ableton weirdness. The host only ever sees **plain
   - The **Rec‑Arm row now has a proper shift layer too**: **shifted Rec‑Arm = base note + 32**.  
   - LEDs are mapped so the panel shows the truth of whatever layer you’re using.
 - **Host sees only the notes you send.** There is **no DAW state feedback** by design. Bind your toggles to whatever in your DAW (mutes, arms, FX on/off, macros…) and forget about fragile integrations.
-- **Hysteresis is for banks, not presets.** CC “hysteresis” is used to stabilize **bank state recall** so flipping banks doesn’t spew jitter. It’s **not** about DAW preset pickup.
-- **GUI**: detailed current‑bank view + 4‑bank micro overview (great for “which bank is hot?” glances).
+- **Hysteresis per CC per Bank.** CC “hysteresis” is used to stabilize **bank state recall** so flipping banks doesn’t spew jitter. It’s **not** about DAW preset pickup. Looking at you, broken Midi Pickup Modes in Ableton -.- (since Ableton 8 btw, took me 15 minutes to fix this.)
+- **GUI**: detailed current‑bank view + 4‑bank micro overview so you can have the entire mixer at a glance when performing ;)
 
 Use‑case: **live set / DJ mix companion**. Turn one MIDImix into four disciplined mini‑surfaces and make local DJs blush.
 
