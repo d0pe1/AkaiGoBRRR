@@ -1,4 +1,5 @@
 import mido
+import time
 from StateHandler import StateHandler
 
 
@@ -58,6 +59,7 @@ class MidiHandler:
         self.cb2 = cb2
         self.channel = mchannel
         self.note_27_state = False  # Attribute to track the state of note 27
+        self.last_output_time = {}  # Track last output time for each CC
         self.sh = StateHandler()
         self.toggle_states = self.sh.default_toggle_states
         self.last_cc_values = self.sh.default_cc
@@ -206,12 +208,17 @@ class MidiHandler:
     def send_control_change_message(self, message):
         """Send control change MIDI messages to the output port."""
         print("Sent control change:", message)
-        if self.within_10(message.value, self.last_cc_values[message.control]):
-            self.last_cc_values[message.control] = message.value
+        cc = message.control
+        now = time.time()
+        last_time = self.last_output_time.get(cc, 0)
+        within_time = (now - last_time) <= 2
+        if self.within_10(message.value, self.last_cc_values[cc]) or within_time:
+            self.last_cc_values[cc] = message.value
+            self.last_output_time[cc] = now
             self.sh.save_state(self.toggle_states, self.last_cc_values, self.ID)
-            self.cb1(mido.Message('control_change', control=message.control, value=message.value, channel=self.channel))
+            self.cb1(mido.Message('control_change', control=cc, value=message.value, channel=self.channel))
         else:
-            print("Not close enough to the Stored Value. Ignoring")
+            print("Not close enough to the Stored Value and not recently moved. Ignoring")
 
     def toggle_note_state(self, note_number):
         """Toggle the state of the note with the given note number."""

@@ -148,7 +148,7 @@ if __name__ == "__main__":
     print_available_midi_connections()
     input_port_name   = "MIDI Mix 14"
     output_port_name  = "01. Internal MIDI 3"
-    output_port_name_2 = "MIDI Mix 15"
+    output_port_name_2 = "MIDI Mix 0"
 
     root = tk.Tk()
     mm = MidiMasterator(input_port_name, output_port_name, output_port_name_2, root)
